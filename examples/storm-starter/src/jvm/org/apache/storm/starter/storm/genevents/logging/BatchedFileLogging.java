@@ -160,14 +160,10 @@ public class BatchedFileLogging  {
 
     public void batchLogwriter(long ts,String identifierData) throws Exception
     {
-        if (counter<this.threshold)
-        {
-            //System.out.print("data is inside hashmap");
-//            batch.put(ts,identifierData);
-            batch.add(new TupleType(ts, identifierData));
-            counter += 1;
-        }
-        else
+        batch.add(new TupleType(ts, identifierData));
+        counter++;
+
+        if (counter==this.threshold)
         {
             for(TupleType tp : batch){
                 this.out.write( this.logStringPrefix + "," + tp.ts + "," + tp.identifier + "\n");
@@ -175,9 +171,7 @@ public class BatchedFileLogging  {
             this.out.flush();
 
             batch.clear();
-
-            counter = 1 ;
-            batch.add(new TupleType(ts, identifierData));
+            counter = 0 ;
         }
     }
 

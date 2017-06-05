@@ -276,7 +276,7 @@ public class SampleSpoutWithAcking extends BaseRichSpout implements ISyntheticEv
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		SampleSpoutWithAcking.logTimeStamp("REPLAYED,"+msgId+","+System.currentTimeMillis(),"FAIL");
+		logTimeStamp("REPLAYED,"+msgId+","+System.currentTimeMillis(),"FAIL");
 	}
 
 
