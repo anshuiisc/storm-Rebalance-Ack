@@ -17,8 +17,8 @@ public class GlobalConstants {
 	public static String dataSetType = "PLUG";  //IT CAN BE STALE USE WITH CAUTION
 	public static String expNum = "0";  //IT CAN BE STALE USE WITH CAUTION
 
-//	public static final String BASE_SIGNAL_DIR_PATH = "/home/anshu/data/storm/output/SIGNALS/";
-	public static final String BASE_SIGNAL_DIR_PATH = "/Users/anshushukla/data/output/SIGNALS/";
+	public static final String BASE_SIGNAL_DIR_PATH = "/home/anshu/data/storm/output/SIGNALS/";
+//	public static final String BASE_SIGNAL_DIR_PATH = "/Users/anshushukla/data/output/SIGNALS/";
 	public static boolean isCharInRange(char ch, char min, char max){
 		if(ch >= min && ch <= max){
 			return true;
