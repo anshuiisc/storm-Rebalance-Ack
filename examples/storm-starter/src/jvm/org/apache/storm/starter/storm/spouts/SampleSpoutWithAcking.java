@@ -254,7 +254,7 @@ public class SampleSpoutWithAcking extends BaseRichSpout implements ISyntheticEv
 	public void ack(Object msgId) {
 //		System.out.println("removing_message_id_from_hashmap:"+msgId);
 		 pending.remove(msgId);
-		SampleSpoutWithAcking.logTimeStamp("ACKED,"+System.currentTimeMillis(),""+pending.size());
+		logTimeStamp(System.currentTimeMillis()+","+pending.size(),"ACKED");
 	}
 
 	/**

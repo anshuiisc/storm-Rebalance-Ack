@@ -31,7 +31,7 @@ public class Sink extends BaseRichBolt {
         this.collector=outputCollector;
         BatchedFileLogging.writeToTemp(this, this.csvFileNameOutSink);
          //ba=new BatchedFileLogging();
-        ba=new BatchedFileLogging(this.csvFileNameOutSink, topologyContext.getThisComponentId());
+        ba=new BatchedFileLogging(this.csvFileNameOutSink+ "-" + System.currentTimeMillis(), topologyContext.getThisComponentId());
 
 //        System.out.println("SinkBolt PID,"+ ManagementFactory.getRuntimeMXBean().getName());
     }
