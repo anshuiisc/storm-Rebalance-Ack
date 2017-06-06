@@ -45,17 +45,17 @@ public class LatencyConfig {
 
 
 
-    public static String readFileforOp() {
-         String rowStringforop = null;
-        try {
-            rowStringforop = LatencyConfig.readFileWithSize("/Users/anshushukla/Downloads/Incomplete/stream/PStormScheduler/src/test/java/operation/tempSAX.xml", StandardCharsets.UTF_8);
-//            rowStringforop = LatencyConfig.readFileWithSize("src/file_1MB", StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            System.out.println("files not readable");
-            e.printStackTrace();
-        }
-        return rowStringforop;
-    }
+//    public static String readFileforOp() {
+//         String rowStringforop = null;
+//        try {
+//            rowStringforop = LatencyConfig.readFileWithSize("/Users/anshushukla/Downloads/Incomplete/stream/PStormScheduler/src/test/java/operation/tempSAX.xml", StandardCharsets.UTF_8);
+////            rowStringforop = LatencyConfig.readFileWithSize("src/file_1MB", StandardCharsets.UTF_8);
+//        } catch (IOException e) {
+//            System.out.println("files not readable");
+//            e.printStackTrace();
+//        }
+//        return rowStringforop;
+//    }
 
 
     public static void doStringOp(String filecontent) {
@@ -68,14 +68,14 @@ public class LatencyConfig {
         System.out.println((stopTime - startTime)/(1000000.0));
     }
 
-    public static void main(String[] args) {
-        String filecontent=readFileforOp();
-//        for(int i=0;i<20;i++)
-        long start=System.currentTimeMillis();
-        while(System.currentTimeMillis()-start<=10000)
-            doStringOp(filecontent);
-
-    }
+//    public static void main(String[] args) {
+//        String filecontent=readFileforOp();
+////        for(int i=0;i<20;i++)
+//        long start=System.currentTimeMillis();
+//        while(System.currentTimeMillis()-start<=10000)
+//            doStringOp(filecontent);
+//
+//    }
 
     public static void doStringOp(int i) {
 

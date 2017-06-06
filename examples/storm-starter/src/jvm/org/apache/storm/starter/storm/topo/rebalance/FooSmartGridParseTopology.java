@@ -163,9 +163,9 @@ public class FooSmartGridParseTopology {
         Config conf = new Config();
 //        conf.setNumWorkers(5);
         conf.setNumAckers(1);
-        conf.setDebug(true);
+        conf.setDebug(false);
         conf.put(Config.TOPOLOGY_BACKPRESSURE_ENABLE,false);
-        conf.put(Config.TOPOLOGY_DEBUG, true);
+        conf.put(Config.TOPOLOGY_DEBUG, false);
 //        conf.put(Config.TOPOLOGY_STATE_CHECKPOINT_INTERVAL,30000);
 //        conf.put(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS,30); // in sec.
         conf.put(Config.TOPOLOGY_STATE_PROVIDER,"org.apache.storm.redis.state.RedisKeyValueStateProvider");

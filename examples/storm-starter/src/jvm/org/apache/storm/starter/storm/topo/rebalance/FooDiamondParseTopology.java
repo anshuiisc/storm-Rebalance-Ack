@@ -122,7 +122,7 @@ public class FooDiamondParseTopology {
         builder.setBolt("fooPartial4", new fooXMLParserStateful("4"), 1).shuffleGrouping("spout");
         builder.setBolt("fooPartial5", new fooXMLParserStateful("5"), 1).shuffleGrouping("spout");
 
-        builder.setBolt("fooPartial6", new fooXMLParser("6"), 4)
+        builder.setBolt("fooPartial6", new fooXMLParserStateful("6"), 4)
                 .shuffleGrouping("fooPartial2")
                 .shuffleGrouping("fooPartial3")
                 .shuffleGrouping("fooPartial4")
@@ -136,9 +136,9 @@ public class FooDiamondParseTopology {
         Config conf = new Config();
 //        conf.setNumWorkers(5);
         conf.setNumAckers(1);
-        conf.setDebug(true);
+        conf.setDebug(false);
         conf.put(Config.TOPOLOGY_BACKPRESSURE_ENABLE,false);
-        conf.put(Config.TOPOLOGY_DEBUG, true);
+        conf.put(Config.TOPOLOGY_DEBUG, false);
 //        conf.put(Config.TOPOLOGY_STATE_CHECKPOINT_INTERVAL,30000);
 //        conf.put(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS,30); // in sec.
         conf.put(Config.TOPOLOGY_STATE_PROVIDER,"org.apache.storm.redis.state.RedisKeyValueStateProvider");
