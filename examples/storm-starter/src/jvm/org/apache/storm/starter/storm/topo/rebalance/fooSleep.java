@@ -4,7 +4,6 @@ package org.apache.storm.starter.storm.topo.rebalance;
 //import org.apache.storm.starter.bolt.operation.Operations;
 //import in.dream_lab.bm.stream_iot.storm.bolts.boltsUidai.LatencyConfig;
 //import in.dream_lab.bm.stream_iot.storm.bolts.boltsUidai.operation.Operations;
-import com.google.common.base.Stopwatch;
 import org.apache.storm.starter.storm.bolts.boltsUidai.LatencyConfig;
 import org.apache.storm.starter.storm.bolts.boltsUidai.operation.Operations;
 import org.apache.storm.state.KeyValueState;
@@ -15,21 +14,18 @@ import org.apache.storm.topology.base.BaseStatefulBolt;
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
+import org.apache.storm.utils.Utils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
-import java.util.UUID;
-
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static org.apache.storm.starter.storm.spouts.SampleSpoutWithAcking.logTimeStamp;
 
 /**
  * Created by anshushukla on 28/02/17.
  */
 
 //public class fooXMLParser extends OurStatefulBoltByteArrayTuple<String,List<byte[]>> {
-public class fooXMLParserStateful extends BaseStatefulBolt<KeyValueState<String, Long>> {
+public class fooSleep extends BaseStatefulBolt<KeyValueState<String, Long>> {
 //        extends BaseRichBolt{
 
     String inputFileString=null;
@@ -38,7 +34,7 @@ public class fooXMLParserStateful extends BaseStatefulBolt<KeyValueState<String,
 //    KeyValueState<String, List<Object>> kvState;
     long sum;
 //    public static String traceVal;
-    fooXMLParserStateful(String name) {
+    fooSleep(String name) {
         this.name = name;
     }
     OutputCollector collector;
@@ -49,14 +45,14 @@ public class fooXMLParserStateful extends BaseStatefulBolt<KeyValueState<String,
         this.collector = collector;
 
 //        xml file specific code
-                String inputXMLpath="/home/anshu/data/storm/dataset/tempSAX.xml";
+//                String inputXMLpath="/home/anshu/data/storm/dataset/tempSAX.xml";
 //        String inputXMLpath="/Users/anshushukla/Downloads/Storm/storm-1.0.3/examples/storm-starter/src/jvm/org/apache/storm/starter/bolt/operation/tempSAX.xml";
 
-        try {
-            inputFileString= LatencyConfig.readFileWithSize(inputXMLpath, StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            inputFileString= LatencyConfig.readFileWithSize(inputXMLpath, StandardCharsets.UTF_8);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
@@ -69,11 +65,11 @@ public class fooXMLParserStateful extends BaseStatefulBolt<KeyValueState<String,
         String afterRebFlag= (input.getValueByField("afterRebFlag")).toString();
         String msgid=input.getValueByField("MSGID").toString();
 
-//        Utils.sleep(3000);
+        Utils.sleep(100);
 
-        int tot_length = 0;
-        for(int i=0;i<3;i++)
-            tot_length += Operations.doXMLparseOp(inputFileString);
+//        int tot_length = 0;
+//        for(int i=0;i<3;i++)
+//            tot_length += Operations.doXMLparseOp(inputFileString);
 
 
         //        kvState.put("len",tot_length);
